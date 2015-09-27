@@ -6,15 +6,17 @@ This library simplifies code for systems containing multiple servos with odd phy
 # Features
 
 ## Drop in replacement 
-This library can be used in place of the standard Servo library with minimal code changes. Simply change `Servo myservo;` to `ServoPlus myservo;`, and you're good to go. From there, you can start taking advantage of other features as needed. 
+This library can be used in place of the standard [Servo library](https://www.arduino.cc/en/Reference/Servo) with minimal code changes. Simply change `Servo myservo;` to `ServoPlus myservo;`, and you're good to go. From there, you can start taking advantage of other features as needed. 
 
 ## Simpler code
 Moves all the positional adjustment and math on each servo write to a single set of configured values. This lets you save code for more interesting things. 
 
-# Helpful Functions
+# Helpful Configuration Functions
 
 ## `map(low_input, high_input,  low output, high_output)`
 Simplify mapping physical systems to the servo's 0-180 range. This makes it easier to do things such as operate in a 0-based range (such as -90 to 90), or scale for mechanical advantage (eg, an input of 90 generates a 45* arm position).
+
+It works just as if you had used Arduino's [`map` function](https://www.arduino.cc/en/Reference/Map) on the values you're passing to the servo `write()` function, except automatically.
 
 ## `offset(degrees)`
 Add in a small offset to help with physical systems being a bit non-ideal, and helps get the `map` in the right position. 
@@ -32,7 +34,6 @@ Returns the last value written, but after applying limits set by `restrict()` or
 
 ## `readAbsolute()`
 Returns the "physical" servo position, as if you were using a standard servo library.
-
 
 # License
 This code is released under the [MIT liscence](LICENSE.md).
